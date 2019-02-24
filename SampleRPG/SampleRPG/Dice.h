@@ -1,14 +1,15 @@
 ﻿#pragma once
 #include <random>
+#include "IStringable.hpp"
 
 namespace rpg::dice
 {
 	/**
 	* サイコロクラス
 	*/
-	class Dice
+	class Dice : public rpg::interface::IStringable
 	{
-		const int numFace;
+		int numFace;
 		int score;
 
 		static std::random_device rnd;	//! 乱数生成
@@ -20,6 +21,7 @@ namespace rpg::dice
 		* @param numFace ダイスの目の数
 		*/
 		Dice(const int& numFace);
+		Dice();
 		virtual ~Dice();
 		
 		/**
@@ -33,12 +35,16 @@ namespace rpg::dice
 		* @return 振ったならtrue
 		*/
 		const bool IsRolled() const;
+
+		const std::u32string ToString() const override;
+
+		Dice& operator=(const Dice& dice);
 	};
 
 	/**
 	* 複数ダイスを投げるクラス
 	*/
-	class MultiDice
+	class DiceManager : public rpg::interface::IStringable
 	{
 		const int numDice;			//! ダイスの個数
 		const int numFace;			//! ダイスの面数
@@ -50,13 +56,15 @@ namespace rpg::dice
 		* @param numDice ダイスの個数
 		* @param numFace ダイスの面数
 		*/
-		MultiDice(const int& numDice, const int& numFace);
-		~MultiDice();
+		DiceManager(const int& numDice, const int& numFace);
+		~DiceManager();
 
 		/**
 		* すべてのダイスを投げる
 		*/
-		const int RollAll();
+		int RollAll();
+
+		const std::u32string ToString() const override;
 	};
 
 	std::random_device Dice::rnd = std::random_device();

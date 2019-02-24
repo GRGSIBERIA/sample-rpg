@@ -267,6 +267,7 @@
   <ItemGroup>
     <ClInclude Include="AbilityScore.h" />
     <ClInclude Include="Dice.h" />
+    <ClInclude Include="IStringable.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
