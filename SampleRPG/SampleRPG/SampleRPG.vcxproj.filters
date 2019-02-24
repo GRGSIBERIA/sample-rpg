@@ -61,9 +61,21 @@
     <Filter Include="Resource Files\nlp\japanese\jumanpp">
       <UniqueIdentifier>{f6fe2a89-c647-48e2-bb2c-27b03b1aeced}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ability">
+      <UniqueIdentifier>{f049e1ba-ba8f-4c07-ba55-f0b16d07ecfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dice">
+      <UniqueIdentifier>{1ed703e2-fa9f-4880-be59-5664947eee99}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilityScore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -231,5 +243,13 @@
     <Xml Include="App\example\test.xml">
       <Filter>Resource Files\example</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbilityScore.h">
+      <Filter>Header Files\ability</Filter>
+    </ClInclude>
+    <ClInclude Include="Dice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
