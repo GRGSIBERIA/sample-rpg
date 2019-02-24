@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Dice.h"
 
 namespace rpg::ability
 {
@@ -12,7 +13,10 @@ namespace rpg::ability
 		float vary;		//! 増減値
 
 	public:
-		AbilityScore(const int _score);
+		AbilityScore();
+
+		AbilityScore(const int _modify);
+
 		virtual ~AbilityScore();
 
 		/**
@@ -50,5 +54,17 @@ namespace rpg::ability
 		* 増減値を取得
 		*/
 		int Vary() const;
+	};
+
+	class DicedAbility : public AbilityScore
+	{
+		rpg::dice::DiceManager dices;	//! 能力値を決めたときのダイス
+
+	public:
+		DicedAbility(const int numDice, const int numFace);
+
+		DicedAbility(const int numDice, const int numFace, const int modify);
+
+		const rpg::dice::DiceManager& Roll();
 	};
 }

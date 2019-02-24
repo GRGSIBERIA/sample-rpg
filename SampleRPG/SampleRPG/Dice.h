@@ -20,8 +20,7 @@ namespace rpg::dice
 		* ダイスインスタンス
 		* @param numFace ダイスの目の数
 		*/
-		Dice(const int& numFace);
-		Dice();
+		Dice(const int numFace);
 		virtual ~Dice();
 		
 		/**
@@ -50,6 +49,8 @@ namespace rpg::dice
 		const int numFace;			//! ダイスの面数
 		std::vector<Dice> dices;	//! ダイスインスタンス
 
+		int total;
+
 	public:
 		/**
 		* 複数ダイスを管理するクラス
@@ -66,7 +67,4 @@ namespace rpg::dice
 
 		const std::u32string ToString() const override;
 	};
-
-	std::random_device Dice::rnd = std::random_device();
-	std::mt19937 Dice::mt = std::mt19937(Dice::rnd());
 }

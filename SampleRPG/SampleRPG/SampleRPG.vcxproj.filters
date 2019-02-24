@@ -67,6 +67,12 @@
     <Filter Include="Header Files\dice">
       <UniqueIdentifier>{1ed703e2-fa9f-4880-be59-5664947eee99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\interface">
+      <UniqueIdentifier>{50f7e534-d640-466f-a63d-279f92dd765e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\character">
+      <UniqueIdentifier>{dcfc6d04-cf3b-4e40-8e10-62b86641b8cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -76,6 +82,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Dice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Abilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -249,9 +264,18 @@
       <Filter>Header Files\ability</Filter>
     </ClInclude>
     <ClInclude Include="Dice.h">
+      <Filter>Header Files\dice</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IStringable.hpp">
+      <Filter>Header Files\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Abilities.h">
+      <Filter>Header Files\ability</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

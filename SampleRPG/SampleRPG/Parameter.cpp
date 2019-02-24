@@ -9,3 +9,7 @@ Parameter::Parameter()
 Parameter::~Parameter()
 {
 }
+
+void rpg::ability::Parameter::ForceRoll()
+{
+}

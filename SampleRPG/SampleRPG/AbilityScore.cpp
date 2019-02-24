@@ -2,8 +2,13 @@
 #include <cmath>
 using namespace rpg::ability;
 
-AbilityScore::AbilityScore(const int _score)
-	: score((float)_score), modify(0.f), vary(0.f)
+AbilityScore::AbilityScore()
+	: score(0.f), modify(0.f), vary(0.f)
+{
+}
+
+rpg::ability::AbilityScore::AbilityScore(const int _modify)
+	: score(0.f), modify((float)_modify), vary(0.f)
 {
 }
 
@@ -45,4 +50,20 @@ int AbilityScore::Modify() const
 int AbilityScore::Vary() const
 {
 	return (int)vary;
+}
+
+rpg::ability::DicedAbility::DicedAbility(const int numDice, const int numFace)
+	: AbilityScore(), dices(numDice, numFace)
+{
+}
+
+rpg::ability::DicedAbility::DicedAbility(const int numDice, const int numFace, const int modify)
+	: AbilityScore(modify), dices(numDice, numFace)
+{
+}
+
+const rpg::dice::DiceManager & rpg::ability::DicedAbility::Roll()
+{
+	dices.RollAll();
+	return dices;
 }

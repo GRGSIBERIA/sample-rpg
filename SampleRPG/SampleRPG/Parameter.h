@@ -13,6 +13,8 @@ namespace rpg::ability
 	public:
 		Parameter();
 		virtual ~Parameter();
+
+		void ForceRoll();
 	};
 
 }

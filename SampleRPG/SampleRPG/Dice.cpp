@@ -1,15 +1,13 @@
 ﻿#include "Dice.h"
 using namespace rpg::dice;
 
-rpg::dice::Dice::Dice(const int & numFace)
+std::random_device Dice::rnd = std::random_device();
+std::mt19937 Dice::mt = std::mt19937(Dice::rnd());
+
+rpg::dice::Dice::Dice(const int numFace)
 	: numFace(numFace), score(0)
 {
 
-}
-
-rpg::dice::Dice::Dice()
-	: numFace(0), score(0)
-{
 }
 
 const int rpg::dice::Dice::Roll()
@@ -42,11 +40,11 @@ Dice::~Dice()
 }
 
 rpg::dice::DiceManager::DiceManager(const int & numDice, const int & numFace)
-	: numDice(numDice), numFace(numFace)
+	: numDice(numDice), numFace(numFace), total(0)
 {
-	dices = std::vector<Dice>(numDice);
-	for (size_t i = 0; i < dices.size(); ++i)
-		dices[i] = Dice(numFace);
+	dices = std::vector<Dice>();
+	for (size_t i = 0; i < numDice; ++i)
+		dices.emplace_back(numFace);
 }
 
 rpg::dice::DiceManager::~DiceManager()
@@ -55,7 +53,7 @@ rpg::dice::DiceManager::~DiceManager()
 
 int rpg::dice::DiceManager::RollAll()
 {
-	int total = 0;
+	total = 0;
 
 	for (size_t i = 0; i < dices.size(); ++i)
 	{
