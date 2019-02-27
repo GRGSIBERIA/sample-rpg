@@ -2,16 +2,15 @@
 #include <cmath>
 using namespace rpg::ability;
 
-AbilityScore::AbilityScore()
-	: score(0.f), modify(0.f), vary(0.f)
+rpg::ability::AbilityScore::AbilityScore(const std::u32string & name)
+	: score(0), modify(0), vary(0), name(name)
 {
 }
 
-rpg::ability::AbilityScore::AbilityScore(const int _modify)
-	: score(0.f), modify((float)_modify), vary(0.f)
+rpg::ability::AbilityScore::AbilityScore(const std::u32string & name, int score, int modify, int vary)
+	: score(score), modify(modify), vary(vary), name(name)
 {
 }
-
 
 AbilityScore::~AbilityScore()
 {
@@ -24,17 +23,17 @@ const int AbilityScore::Value() const
 
 void AbilityScore::Score(const int _score)
 {
-	this->score = (float)_score;
+	this->score = _score;
 }
 
 void AbilityScore::Modify(const int _modify)
 {
-	this->modify = (float)_modify;
+	this->modify = _modify;
 }
 
 void AbilityScore::Vary(const int _vary)
 {
-	this->vary = (float)_vary;
+	this->vary = _vary;
 }
 
 int AbilityScore::Score() const
@@ -52,18 +51,7 @@ int AbilityScore::Vary() const
 	return (int)vary;
 }
 
-rpg::ability::DicedAbility::DicedAbility(const int numDice, const int numFace)
-	: AbilityScore(), dices(numDice, numFace)
+const std::u32string & rpg::ability::AbilityScore::ToString() const
 {
-}
-
-rpg::ability::DicedAbility::DicedAbility(const int numDice, const int numFace, const int modify)
-	: AbilityScore(modify), dices(numDice, numFace)
-{
-}
-
-const rpg::dice::DiceManager & rpg::ability::DicedAbility::Roll()
-{
-	dices.RollAll();
-	return dices;
+	return name;
 }

@@ -1,21 +1,25 @@
 ﻿#pragma once
 #include "Dice.h"
+#include "IStringable.hpp"
 
 namespace rpg::ability
 {
 	/**
 	* 能力値クラス
 	*/
-	class AbilityScore
+	class AbilityScore : public rpg::interface::IStringable
 	{
-		float score;	//! 能力値
-		float modify;	//! 修正値
-		float vary;		//! 増減値
+	protected:
+		const std::u32string name;	// アビリティ名
+
+		int score;	//! 能力値
+		int modify;	//! 修正値
+		int vary;	//! 増減値
 
 	public:
-		AbilityScore();
+		AbilityScore(const std::u32string& name);
 
-		AbilityScore(const int _modify);
+		AbilityScore(const std::u32string& name, int score, int modify, int vary);
 
 		virtual ~AbilityScore();
 
@@ -54,17 +58,7 @@ namespace rpg::ability
 		* 増減値を取得
 		*/
 		int Vary() const;
-	};
 
-	class DicedAbility : public AbilityScore
-	{
-		rpg::dice::DiceManager dices;	//! 能力値を決めたときのダイス
-
-	public:
-		DicedAbility(const int numDice, const int numFace);
-
-		DicedAbility(const int numDice, const int numFace, const int modify);
-
-		const rpg::dice::DiceManager& Roll();
+		const std::u32string& ToString() const override;
 	};
 }

@@ -22,7 +22,7 @@ const bool rpg::dice::Dice::IsRolled() const
 	return score > 0;
 }
 
-const std::u32string rpg::dice::Dice::ToString() const
+const std::u32string& rpg::dice::Dice::ToString() const
 {
 	const auto str = std::to_string(score);
 	return std::u32string(str.cbegin(), str.cend());
@@ -39,7 +39,7 @@ Dice::~Dice()
 {
 }
 
-rpg::dice::DiceManager::DiceManager(const int & numDice, const int & numFace)
+rpg::dice::DiceManager::DiceManager(const int numDice, const int numFace)
 	: numDice(numDice), numFace(numFace), total(0)
 {
 	dices = std::vector<Dice>();
@@ -63,7 +63,7 @@ int rpg::dice::DiceManager::RollAll()
 	return total;
 }
 
-const std::u32string rpg::dice::DiceManager::ToString() const
+const std::u32string& rpg::dice::DiceManager::ToString() const
 {
 	const std::string str = std::to_string(numDice) + "d" + std::to_string(numFace);
 	return std::u32string(str.cbegin(), str.cend());

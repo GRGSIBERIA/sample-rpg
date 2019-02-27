@@ -1,20 +1,51 @@
 ﻿#pragma once
-#include "Abilities.h"
+#include "AbilityScore.h"
 
 namespace rpg::ability
 {
+	/**
+	* パラメータ
+	*/
 	class Parameter
 	{
-		STR _str; CON _con;	POW _pow; DEX _dex; APP _app; 
-		SIZ _siz; INT _int; EDU _edu; IDE _ide; LCK _lck; 
-		KNW _knw; SAN _san; END _end; MGP _mgp;	DMG _dwg; 
-		JOB _job; FSC _fsc; ANU _anu; PRP _prp;
+		AbilityScore STR;
+		AbilityScore CON;
+		AbilityScore POW;
+		AbilityScore DEX;
+		AbilityScore APP;
+		AbilityScore SIZ;
+		AbilityScore INT;
+		AbilityScore EDU;
+		AbilityScore IDEA;
+		AbilityScore LUCK;
+		AbilityScore KNOW;
+		AbilityScore SAN;
+		AbilityScore HP;
+		AbilityScore MP;
+		AbilityScore DMGB;
+		AbilityScore JOB;
+		AbilityScore ZES;
+		AbilityScore ANU;
+		AbilityScore PRP;
+
+		void Roll(AbilityScore& score, const int numDice, const int numFace, const int modify);
+
+		void SetDependency(AbilityScore& score, const AbilityScore& source, const int magnitude);
+
+		void DecideDamageBonus(AbilityScore& DMG, const AbilityScore& STR, const AbilityScore& SIZ);
+
+		void DecideAnnualIncome(AbilityScore& ANU);
+
+		void DecideHP(AbilityScore& HP, const AbilityScore& CON, const AbilityScore& SIZ);
 
 	public:
 		Parameter();
+
 		virtual ~Parameter();
 
 		void ForceRoll();
+
+		void Update();
 	};
 
 }

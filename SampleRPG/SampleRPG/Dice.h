@@ -30,12 +30,12 @@ namespace rpg::dice
 		const int Roll();
 
 		/**
-		* ダイスを振ったかどうか？
+		* ダイスを振ったかどうか
 		* @return 振ったならtrue
 		*/
 		const bool IsRolled() const;
 
-		const std::u32string ToString() const override;
+		const std::u32string& ToString() const override;
 
 		Dice& operator=(const Dice& dice);
 	};
@@ -57,7 +57,7 @@ namespace rpg::dice
 		* @param numDice ダイスの個数
 		* @param numFace ダイスの面数
 		*/
-		DiceManager(const int& numDice, const int& numFace);
+		DiceManager(const int numDice, const int numFace);
 		~DiceManager();
 
 		/**
@@ -65,6 +65,15 @@ namespace rpg::dice
 		*/
 		int RollAll();
 
-		const std::u32string ToString() const override;
+		const std::u32string& ToString() const override;
+	};
+
+	/**
+	* ダイスの値が想定値より上回ったときに送出される
+	*/
+	class DiceOverflowException : public std::exception
+	{
+	public:
+		DiceOverflowException(const std::string& str) : exception(str.c_str()) {}
 	};
 }
