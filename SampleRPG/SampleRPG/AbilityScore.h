@@ -60,5 +60,10 @@ namespace rpg::ability
 		int Vary() const;
 
 		const std::u32string& ToString() const override;
+
+		/**
+		* 修正値を右辺から足す
+		*/
+		AbilityScore operator+(const AbilityScore& rhs);
 	};
 }

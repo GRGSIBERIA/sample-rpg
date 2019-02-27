@@ -55,3 +55,8 @@ const std::u32string & rpg::ability::AbilityScore::ToString() const
 {
 	return name;
 }
+
+AbilityScore rpg::ability::AbilityScore::operator+(const AbilityScore & rhs)
+{
+	return AbilityScore(name, score, modify + rhs.score, vary);
+}

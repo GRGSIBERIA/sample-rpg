@@ -4,6 +4,32 @@
 namespace rpg::ability
 {
 	/**
+	* アビリティのENUM型
+	*/
+	enum Ability
+	{
+		STR,
+		CON,
+		POW,
+		DEX,
+		APP,
+		SIZ,
+		INT,
+		EDU,
+		IDEA,
+		LUCK,
+		KNOW,
+		SAN,
+		HP,
+		MP,
+		DMGB,
+		JOB,
+		ZES,
+		ANU,
+		PRP
+	};
+
+	/**
 	* パラメータ
 	*/
 	class Parameter
